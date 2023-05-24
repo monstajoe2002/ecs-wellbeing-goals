@@ -4,11 +4,11 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'goals', views.GoalViewSet)
-
+router.register(r'diaries', views.DiaryViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
+    path('goalsmodule/', include(router.urls)),
 
 ]
