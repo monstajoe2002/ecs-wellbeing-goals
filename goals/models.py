@@ -19,3 +19,17 @@ class Goal(models.Model):
         managed = True
         verbose_name = 'Goal'
         verbose_name_plural = 'Goals'
+
+class Diary(models.Model):
+    name=models.CharField(max_length=50)
+    description=models.CharField(max_length=100)
+    data=models.CharField(max_length=250)
+    
+    def __str__(self):
+        pass
+
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Diary'
+        verbose_name_plural = 'Diaries'
