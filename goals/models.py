@@ -1,9 +1,11 @@
+import uuid
 from django.db import models
 from django.utils import timezone
 # Create your models here.
 
 
 class Goal(models.Model):
+    id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     current = models.CharField(max_length=100)
@@ -21,6 +23,7 @@ class Goal(models.Model):
         verbose_name_plural = 'Goals'
 
 class Diary(models.Model):
+    id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name=models.CharField(max_length=50)
     description=models.CharField(max_length=100)
     data=models.CharField(max_length=250)
@@ -29,7 +32,6 @@ class Diary(models.Model):
         pass
 
     class Meta:
-        db_table = ''
         managed = True
         verbose_name = 'Diary'
         verbose_name_plural = 'Diaries'
