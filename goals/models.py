@@ -37,3 +37,12 @@ class Diary(models.Model):
         managed = True
         verbose_name = 'Diary'
         verbose_name_plural = 'Diaries'
+
+    class ActionPlan(models.Model):
+        id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+        task_list = models.CharField(max_length=255)
+        due_date = models.DateTimeField()
+
+    class Meta:
+        verbose_name = 'Action Plan'
+        verbose_name_plural = 'Action Plans'
