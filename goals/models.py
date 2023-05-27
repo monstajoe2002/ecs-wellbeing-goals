@@ -5,7 +5,8 @@ from django.utils import timezone
 
 
 class Goal(models.Model):
-    id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # TODO: Fix UUID problem with postgresql
+    # id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     current = models.CharField(max_length=100)
@@ -23,10 +24,11 @@ class Goal(models.Model):
         verbose_name_plural = 'Goals'
 
 class Diary(models.Model):
-    id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # TODO: Fix UUID problem with postgresql
+    # id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name=models.CharField(max_length=50)
     description=models.CharField(max_length=100)
-    data=models.CharField(max_length=250)
+    data=models.TextField()
     
     def __str__(self):
         pass
