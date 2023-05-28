@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.utils import timezone
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 
 
@@ -38,11 +39,12 @@ class Diary(models.Model):
         verbose_name = 'Diary'
         verbose_name_plural = 'Diaries'
 
-    class ActionPlan(models.Model):
-        id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-        task_list = models.CharField(max_length=255)
-        due_date = models.DateTimeField()
+class ActionPlan(models.Model):
+    id=models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    task_list = ArrayField(base_field=models.CharField(max_length=100))
+    due_date = models.DateTimeField()
 
     class Meta:
+        managed = True
         verbose_name = 'Action Plan'
         verbose_name_plural = 'Action Plans'
